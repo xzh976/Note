@@ -1,7 +1,3 @@
----
-
----
-
 2022.9.24 
 
 Low light Raw2Video
@@ -52,37 +48,25 @@ L经过放大器后 G = L · g + Read noise · g
 
 I的方差和均值可表达为如下：
 
-均值：
-$$
-E(I)=g⋅E(L)=g⋅t⋅(α⋅Φ+D)
-$$
-方差：
-$$
-σ(I)2=g2 ⋅ t⋅ (α⋅ Φ + D) + σ(Add noise)2
-$$
+均值：E(I)=g⋅E(L)=g⋅t⋅(α⋅Φ+D)
+
+方差：σ(I)2=g2 ⋅ t⋅ (α⋅ Φ + D) + σ(Add noise)2
+
 **Step 2: 噪声估计**
 
 需要估计的参数：暗电流D, 放大系数gain, read noise, ADC noise
 
 暗电流估计：把相机镜头盖住，拍摄多帧图像，进行平均。得到的均值可近似为暗电流大小 (需要考虑不同的gain值影响)
 
-去掉暗电流之后的均值：
-$$
-E(I)=g⋅t⋅(α⋅Φ)
-$$
+去掉暗电流之后的均值：E(I)=g⋅t⋅(α⋅Φ)
 
+去掉暗电流之后的方差：σ(I) 2 =g⋅E(I)+σ(Add noise)2
 
-去掉暗电流之后的方差：
-$$
-σ(I) 2 =g⋅E(I)+σ(Add noise) 2
-$$
 信号和方差满足线性关系，放大倍数：g，截距：加性噪声
 
 g值和加性噪声的估计：拍摄多帧灰度图像，计算每个像素点的均值和方差，通过线性拟合来估计
 
-以上来源：
-
-[https://blog.csdn.net/matrix_space/article/details/105745560?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522166417251916782388025428%2522%252C%2522scm%2522%253A%252220140713.130102334.pc%255Fall.%2522%257D&amp;request_id=166417251916782388025428&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~first_rank_ecpm_v1~pc_rank_v39-2-105745560-null-null.142%5Ev50%5Epc_rank_34_2,201%5Ev3%5Econtrol_1&amp;utm_term=计算摄影：噪声模型&amp;spm=1018.2226.3001.4187]: 
+以上来源：https://blog.csdn.net/matrix_space/article/details/105745560?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522166417251916782388025428%2522%252C%2522scm%2522%253A%252220140713.130102334.pc%255Fall.%2522%257D&request_id=166417251916782388025428&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~first_rank_ecpm_v1~pc_rank_v39-2-105745560-null-null.142%5Ev50%5Epc_rank_34_2,201%5Ev3%5Econtrol_1&utm_term=计算摄影：噪声模型&spm=1018.2226.3001.4187
 
 ------
 
